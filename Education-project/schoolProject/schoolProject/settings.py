@@ -79,6 +79,7 @@ WSGI_APPLICATION = 'schoolProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+<<<<<<< HEAD
 # DATABASES = {
 #     # 'default': {
 #     #     'ENGINE': 'django.db.backends.sqlite3',
@@ -118,6 +119,25 @@ DATABASE_URL = os.getenv('DATABASE_URL')
 if DATABASE_URL:
     DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
 
+=======
+# import os
+import dj_database_url
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables
+
+DATABASES = {
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+}
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default="postgresql://school_database_j5uk_user:jwy2ZMaGo4jQ6XJA097kk9aV00nwLuLD@dpg-cv1h48lds78s73ds92ug-a.oregon-postgres.render.com/school_database_j5uk"
+    )
+}
+>>>>>>> b13b907 (Updated database settings and other configurations)
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
