@@ -79,14 +79,44 @@ WSGI_APPLICATION = 'schoolProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
-        'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+# DATABASES = {
+#     # 'default': {
+#     #     'ENGINE': 'django.db.backends.sqlite3',
+#     #     'NAME': BASE_DIR / 'db.sqlite3',
+#     # }
+#         # 'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 
+    
+# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'myprojectdb',  # Your database name
+        'USER': 'myprojectuser',  # Your PostgreSQL username
+        'PASSWORD': 'mypassword',  # Your PostgreSQL password
+        'HOST': 'localhost',  # Set to your database host (usually localhost)
+        'PORT': '5432',  # Default PostgreSQL port
+    }
 }
+
+# import os
+import dj_database_url
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'school_database',  # Replace with your database name
+        'USER': 'school_database_j5uk_user',  # Replace with your username
+        'PASSWORD': 'jwy2ZMaGo4jQ6XJA097kk9aV00nwLuLD',  # Replace with your actual password
+        'HOST': 'dpg-cv1h48lds78s73ds92ug-a',  # Replace with your host
+        'PORT': '5432',
+    }
+}
+
+# If using Render-provided DATABASE_URL, override default settings
+DATABASE_URL = os.getenv('DATABASE_URL')
+if DATABASE_URL:
+    DATABASES['default'] = dj_database_url.config(default=DATABASE_URL)
 
 
 # Password validation
